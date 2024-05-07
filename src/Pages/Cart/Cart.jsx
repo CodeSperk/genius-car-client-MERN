@@ -2,21 +2,30 @@ import { Link } from "react-router-dom";
 import SharedBanner from "../../Components/Banner/SharedBanner";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Cart = () => {
   const {user} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const axiosSecure = useAxiosSecure();
+
+
   console.log(bookings);
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+
+  const url = `/bookings?email=${user?.email}`;
 
   useEffect(() => {
-    fetch(url, {credentials: 'include'})
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      setBookings(data)
-    })
-  }, [url])
+    // fetch(url, {credentials: 'include'})
+    // .then(res => res.json())
+    // .then(data => {
+    //   console.log(data);
+    //   setBookings(data)
+    // })
+
+    axiosSecure.get(url)
+    .then(res => setBookings(res.data))
+  }, [url, axiosSecure])
 
 console.log(bookings);
 const imageUrl = bookings[0]?.img;
