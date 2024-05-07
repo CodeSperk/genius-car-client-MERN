@@ -1,15 +1,16 @@
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import loginImg from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
-import { AuthContext } from "../../Providers/AuthProvider";
+
 import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const {loginUser, googleLogin} = useContext(AuthContext);
+  const {loginUser, googleLogin} = useAuth();
   
   const handleLogin = event => {
     event.preventDefault();

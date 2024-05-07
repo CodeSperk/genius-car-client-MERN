@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
+import useServices from "../../../Hooks/useServices";
 
 const Services = () => {
-  const [services, setServices] = useState([]);
+  const services = useServices();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/services")
-    .then(res=> res.json())
-    .then(data=>{
-      setServices(data);
-    })
-  },[])
   return (
     <section>
 {/* service header */}
