@@ -10,7 +10,7 @@ const Cart = () => {
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
   useEffect(() => {
-    fetch(url)
+    fetch(url, {credentials: 'include'})
     .then(res => res.json())
     .then(data => {
       console.log(data);

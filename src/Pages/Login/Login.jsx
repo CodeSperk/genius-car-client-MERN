@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
-  const {loginUser} = useContext(AuthContext);
+  const {loginUser, googleLogin} = useContext(AuthContext);
   
   const handleLogin = event => {
     event.preventDefault();
@@ -30,6 +30,19 @@ const Login = () => {
     })
     .catch(error => console.log(error));
     
+  }
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then(result => {
+      Swal.fire({
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+    .catch(error => console.log(error.code));
   }
 
   return (
@@ -74,7 +87,7 @@ const Login = () => {
 		<button aria-label="Log in with Google" className="p-2.5 rounded-full bg-[var(--bg-light)] hover:text-[var(--clr-accent)] border-2 hover:border-[var(--clr-accent)]">
     <FaLinkedinIn />
 		</button>
-		<button aria-label="Log in with Google" className="p-2.5 rounded-full bg-[var(--bg-light)] hover:text-[var(--clr-accent)] border-2 hover:border-[var(--clr-accent)]">
+		<button aria-label="Log in with Google" className="p-2.5 rounded-full bg-[var(--bg-light)] hover:text-[var(--clr-accent)] border-2 hover:border-[var(--clr-accent)]" onClick={handleGoogleLogin}>
     <FaGoogle />
 		</button>
 	</div>
