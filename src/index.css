@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --clr-accent: #FF3811;
+  --clr-primary: #737373;
+  --clr-secondary: #A2A2A2;
+  --clr-heading: #151515;
+  --clr-white: #FFF;
+
+
+  --bg-dark: #151515;
+  --bg-light: #F3F3F3;
+}
+
+body{
+  font-family: "Inter", sans-serif;
+}
+section{
+  margin-top: 64px;
+}
+h1,h2,h3,h4,h5,h6{
+  color:var(--clr-heading);
+  font-weight: bold;
+}
+h1{
+  font-size: 1.75rem;
+  line-height: 32px;
+}
+h2{
+  font-size: 24px;
+}
+h4{
+  font-size: 18px;
+}
+h5{
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  h1{
+    font-size: 48px;
+    line-height: 56px;
+  }
+  h2{
+    font-size: 36px;
+  }
+  h4{
+    font-size: 20px;
+  }
+  h5{
+    font-size: 1rem;
+  }
+  section{
+    margin-top: 100px;
+  }
+}
